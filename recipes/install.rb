@@ -37,4 +37,3 @@ end
 
 include_recipe "aerospike-cluster::#{node['aerospike']['install_method']}"
 
-include_recipe 'aerospike-cluster::amc'
