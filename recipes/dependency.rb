@@ -19,3 +19,10 @@
 
 # TODO: add package dependency
 include_recipe 'aerospike-cluster::user'
+
+directory node['aerospike']['parent_dir'] do
+  owner node['aerospike']['user']
+  group node['aerospike']['group']
+  mode node['aerospike']['mode']
+  recursive true
+end

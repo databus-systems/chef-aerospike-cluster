@@ -27,13 +27,4 @@ if node['aerospike']['install_method'] == 'enterprise'
 end
 
 include_recipe 'aerospike-cluster::dependency'
-
-directory node['aerospike']['parent_dir'] do
-  owner node['aerospike']['user']
-  group node['aerospike']['group']
-  mode node['aerospike']['mode']
-  recursive true
-end
-
 include_recipe "aerospike-cluster::#{node['aerospike']['install_method']}"
-
