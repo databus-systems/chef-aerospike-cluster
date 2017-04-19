@@ -106,6 +106,7 @@ def amc_package_sha256sum(edition, version, os)
   sha256sums['community']['el6']['3.6.3'] = '9a160f59f7a815106a39c4cf28043665383986977d14e11a681ff0f29215ace5'
 
   sha256sums['enterprise']['ubuntu12']['3.6.3'] = 'd52ad1d5bbb82c46ad3679272d2e6952c4f16a33c22a0b247e13cda1e18b8b0b'
+  sha256sums['enterprise']['ubuntu12']['4.0.11'] = '0eca7556b1ede6335f105c3b507db78c5332f1979177271e327cdfb74131d7cd'
   sha256sums['enterprise']['debian6']['3.6.3'] = 'd52ad1d5bbb82c46ad3679272d2e6952c4f16a33c22a0b247e13cda1e18b8b0b'
   sha256sums['enterprise']['el6']['3.6.3'] = '3e69911adb03b5a9c75e2425adc706bdfdaab064097264c406194907f1fdf27e'
 
