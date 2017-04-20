@@ -41,8 +41,10 @@ def amc_config_generator(object, intend = 2)
     if value.is_a?(Hash)
       data << "[" + key + "] \n" 
       data << amc_config_generator(value, intend + 2) + "\n"
-    else
+    elsif value.is_a?(Integer)
       data << key + ' = ' + value.to_s + "\n"
+    else
+      data << key + ' = ' + '"' + value.to_s + '"' + "\n"
     end
   end
   data
