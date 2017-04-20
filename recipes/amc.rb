@@ -85,9 +85,9 @@ template 'gunicorn_config.py' do
   notifies :restart, 'service[amc]' if node['aerospike']['notify_restart']
 end
 
-template 'amc.cfg' do
-  path ::File.join(node['aerospike']['amc']['conf_dir'], 'amc.cfg')
-  source 'amc.cfg.erb'
+template 'amc.conf' do
+  path '/etc/amc/amc.conf'
+  source 'amc.conf.erb'
   variables(:config => node['aerospike']['amc']['config'])
   notifies :restart, 'service[amc]' if node['aerospike']['notify_restart']
 end
