@@ -71,6 +71,13 @@ package 'install_amc_package' do
   notifies :restart, 'service[amc]' if node['aerospike']['notify_restart']
 end
 
+directory node['aerospike']['amc']['conf_dir'] do
+  owner node['aerospike']['user']
+  group node['aerospike']['group']
+  mode node['aerospike']['mode']
+  recursive true
+end
+
 template 'gunicorn_config.py' do
   path ::File.join(node['aerospike']['amc']['conf_dir'], 'gunicorn_config.py')
   source 'gunicorn_config.py.erb'
@@ -81,6 +88,7 @@ end
 template 'amc.cfg' do
   path ::File.join(node['aerospike']['amc']['conf_dir'], 'amc.cfg')
   source 'amc.cfg.erb'
+  variables(:config => node['aerospike']['amc']['config'])
   notifies :restart, 'service[amc]' if node['aerospike']['notify_restart']
 end
 

@@ -1,2 +1,6 @@
-[AMC]
-update_interval = <%= node['aerospike']['amc']['update_interval'] %>
+#
+# This file is managed by Chef.
+# Do NOT modify this file directly.
+#
+
+<%= amc_config_generator(@config) %>

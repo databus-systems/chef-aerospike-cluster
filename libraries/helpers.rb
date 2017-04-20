@@ -26,6 +26,28 @@ def as_config_generator(object, intend = 2)
   data
 end
 
+def amc_config_generator(object, intend = 2)
+  raise "expecting a Hash, but got '#{object.inspect}'" unless object.is_a?(Hash)
+  data = ''
+  object.each do |key, value|
+    if %w(server_cert_pool send_to).include?(key)
+      raise "expecting an Array for attribute #{key}" unless value.is_a?(Array)
+      # array attributes
+      arr = p value
+      data << key + ' = ' + arr.to_s + "\n"
+      next
+    end
+
+    if value.is_a?(Hash)
+      data << "[" + key + "] \n" 
+      data << amc_config_generator(value, intend + 2) + "\n"
+    else
+      data << key + ' = ' + value.to_s + "\n"
+    end
+  end
+  data
+end
+
 def tarball_sha256sum(edition, version)
   sha256sums = { 'community' => {}, 'enterprise' => {} }
   sha256sums['community']['3.6.3'] = 'fb0fb93e64a8559349645f20821193d1f767672bc06c7f0ad1b1b0a4bc40a7f2'
